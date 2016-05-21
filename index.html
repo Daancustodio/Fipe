@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	</head>
+	<body  >
+		<div class="container-fluid" ng-controller="FipeController as fipe">
+			<div class="row-fluid">
+				<h1 class="text-center text-primary bg-primary">Consulta tabela fipe</h1>
+				<div class="panel panel-primary" ng-hide="veiculos">
+					<div class="panel-heading text-center">Marcas</div>
+					<div class="panel-body">
+						<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search
+"></i></span>
+							<input type="text" class="form-control" placeholder="Username" ng-model="filtro.marca" aria-describedby="basic-addon1">
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item" ng-repeat="marca in marcas |filter: filtro.marca">
+								<a href="#" ng-click="bucaVeiculos(marca)">{{marca.fipe_name}}</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<!-- Veiculos-->
+				<div class="panel panel-success" ng-show="veiculos">
+					<div class="panel-heading">
+						<h3 class="panel-title text-center">Veiculos da marca {{marcaSelecionada.name}}</h3>
+					</div>
+					<div class="panel-body">
+						<div class="row-fluid">
+							<div class="input-group">
+							<span class="input-group-addon" id="basic-addon1"><i class="glyphicon glyphicon-search
+"></i></span>
+							<input type="text" class="form-control" placeholder="Username" ng-model="filtro.veiculo" aria-describedby="basic-addon1">
+						</div>
+						<ul class="list-group">
+							<li class="list-group-item" ng-repeat="veiculo in veiculos |filter: filtro.veiculo">
+								<a href="#" ng-click="bucaVeiculos(veiculo)">{{veiculo.fipe_name}}</a>
+							</li>
+						</ul>
+					</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row-fluid"></div>
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+		<script src="app.js"></script></body>
+	</html>
